@@ -21,9 +21,22 @@ extension RequestComponent {
 }
 
 @_functionBuilder public struct RequestBuilder {
+    
 	public static func buildBlock(_ partialResults: RequestComponent...) -> RequestComponent {
 		partialResults.reduce(partialResults.first!) { first, next in
 			return first.combined(with: next)
 		}
 	}
+    
+    static func buildIf(_ value: RequestComponent?) -> RequestComponent {
+        value ?? WrapperRequest.init(request: nil)
+    }
+    
+    static func buildEither(first: RequestComponent) -> RequestComponent {
+        first
+    }
+
+    static func buildEither(second: RequestComponent) -> RequestComponent {
+        second
+    }
 }

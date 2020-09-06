@@ -2,6 +2,8 @@ import XCTest
 @testable import RequestKit
 
 struct SampleRequestBuilder {
+    
+    let condition: Bool
 	
 	@RequestBuilder func makeSampleRequest() -> RequestComponent {
         Scheme("x-sample-app")
@@ -13,6 +15,12 @@ struct SampleRequestBuilder {
 		
         QueryItem("q", value: "test")
         QueryItem("api_version", value: "1.0")
+        
+        if condition {
+            QueryItem("condition", value: "true")
+        } else {
+            QueryItem("condition", value: "false")
+        }
         
         AcceptHeader.applicationJson
 		
@@ -28,7 +36,7 @@ final class RequestKitTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        let component = SampleRequestBuilder().makeSampleRequest()
+        let component = SampleRequestBuilder(condition: true).makeSampleRequest()
         guard let request = component.request else {
             XCTAssert(false)
             return
@@ -38,7 +46,7 @@ final class RequestKitTests: XCTestCase {
         XCTAssertEqual(request.allHTTPHeaderFields?["Authentication"], "Bearer j4q32489w8e9fw")
         XCTAssertEqual(request.allHTTPHeaderFields?["x-client-id"], "EDDD436F-7D2F-4B4B-80BD-A9403EB06BD5")
         
-        XCTAssertEqual(request.url?.absoluteString, "x-sample-app://example.com:8080/api/v1/search?q=test&api_version=1.0")
+        XCTAssertEqual(request.url?.absoluteString, "x-sample-app://example.com:8080/api/v1/search?q=test&api_version=1.0&condition=true")
     }
 
     static var allTests = [

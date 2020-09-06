@@ -58,7 +58,7 @@
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* RequestKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestKit.swift; sourceTree = "<group>"; };
-		"RequestKit::RequestKit::Product" /* RequestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RequestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"RequestKit::RequestKit::Product" /* RequestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RequestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"RequestKit::RequestKitTests::Product" /* RequestKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = RequestKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 

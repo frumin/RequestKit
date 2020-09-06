@@ -21,7 +21,7 @@ extension RequestComponent {
 }
 
 @_functionBuilder public struct RequestBuilder {
-	static func buildBlock(_ partialResults: RequestComponent...) -> RequestComponent {
+	public static func buildBlock(_ partialResults: RequestComponent...) -> RequestComponent {
 		partialResults.reduce(partialResults.first!) { first, next in
 			return first.combined(with: next)
 		}

@@ -11,7 +11,7 @@ public struct Header: RequestComponent {
     let key: String
     let value: String
     
-    init(_ key: String, _ value: String) {
+    public init(_ key: String, _ value: String) {
         self.key = key
         self.value = value
     }
@@ -33,7 +33,7 @@ public struct AcceptHeader: RequestComponent {
     
     public let request: URLRequest?
     
-    init(_ value: String) {
+    public init(_ value: String) {
         request = Header("Accept", value).request
     }
 }
@@ -42,7 +42,7 @@ public struct Host: RequestComponent {
     
     let name: String
     
-    init(_ name: String) {
+    public init(_ name: String) {
         self.name = name
     }
     
@@ -56,7 +56,7 @@ public struct Host: RequestComponent {
 public struct Port: RequestComponent {
     let port: Int
     
-    init(_ port: Int) {
+    public init(_ port: Int) {
         self.port = port
     }
     
@@ -70,7 +70,7 @@ public struct Port: RequestComponent {
 public struct Scheme: RequestComponent {
     let scheme: String
     
-    init(_ scheme: String) {
+    public init(_ scheme: String) {
         self.scheme = scheme
     }
     
@@ -85,7 +85,7 @@ public struct Path: RequestComponent {
     
     let path: String
     
-    init(_ path: String) {
+    public init(_ path: String) {
         self.path = path
     }
     
@@ -100,7 +100,7 @@ public struct QueryItem: RequestComponent {
     let key: String
     let value: String
     
-    init(_ name: String, value: String) {
+    public init(_ name: String, value: String) {
         self.key = name
         self.value = value
     }

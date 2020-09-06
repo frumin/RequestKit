@@ -26,6 +26,7 @@
 		E2C74EA525047B4000948FF2 /* WrapperRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C74EA425047B4000948FF2 /* WrapperRequest.swift */; };
 		E2C74EA72504818800948FF2 /* Optional+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C74EA62504818800948FF2 /* Optional+Additions.swift */; };
 		E2C74EB62505616A00948FF2 /* URLRequest+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C74EB52505616A00948FF2 /* URLRequest+Additions.swift */; };
+		E2C74EB8250563B400948FF2 /* WrapperForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C74EB7250563B400948FF2 /* WrapperForm.swift */; };
 		OBJ_22 /* RequestKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* RequestKit.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* RequestKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* RequestKitTests.swift */; };
@@ -56,6 +57,7 @@
 		E2C74EA425047B4000948FF2 /* WrapperRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperRequest.swift; sourceTree = "<group>"; };
 		E2C74EA62504818800948FF2 /* Optional+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Additions.swift"; sourceTree = "<group>"; };
 		E2C74EB52505616A00948FF2 /* URLRequest+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Additions.swift"; sourceTree = "<group>"; };
+		E2C74EB7250563B400948FF2 /* WrapperForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperForm.swift; sourceTree = "<group>"; };
 		OBJ_12 /* RequestKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestKitTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				OBJ_9 /* RequestKit.swift */,
 				E2C74EA025047AF500948FF2 /* Components.swift */,
 				E2C74EA425047B4000948FF2 /* WrapperRequest.swift */,
+				E2C74EB7250563B400948FF2 /* WrapperForm.swift */,
 				E2C74EA225047B2000948FF2 /* URLComponents+Additions.swift */,
 				E2C74EA62504818800948FF2 /* Optional+Additions.swift */,
 				E2C74EB52505616A00948FF2 /* URLRequest+Additions.swift */,
@@ -231,6 +234,7 @@
 				E2C74EA72504818800948FF2 /* Optional+Additions.swift in Sources */,
 				E2C74EA525047B4000948FF2 /* WrapperRequest.swift in Sources */,
 				E2C74EA325047B2000948FF2 /* URLComponents+Additions.swift in Sources */,
+				E2C74EB8250563B400948FF2 /* WrapperForm.swift in Sources */,
 				E2C74EA125047AF500948FF2 /* Components.swift in Sources */,
 				E2C74EB62505616A00948FF2 /* URLRequest+Additions.swift in Sources */,
 			);

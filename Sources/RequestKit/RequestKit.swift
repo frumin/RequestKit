@@ -20,6 +20,18 @@ extension RequestComponent {
 	}
 }
 
+public protocol FormComponent {
+    var data: Data? { get }
+    
+    func combined(with: FormComponent) -> FormComponent
+}
+
+extension FormComponent {
+    public func combined(with component: FormComponent) -> FormComponent {
+        return WrapperForm(data: component.data)
+    }
+}
+
 @_functionBuilder public struct RequestBuilder {
     
 	public static func buildBlock(_ partialResults: RequestComponent...) -> RequestComponent {
@@ -29,7 +41,7 @@ extension RequestComponent {
 	}
     
     public static func buildIf(_ value: RequestComponent?) -> RequestComponent {
-        value ?? WrapperRequest.init(request: nil)
+        value ?? WrapperRequest(request: nil)
     }
     
     public static func buildEither(first: RequestComponent) -> RequestComponent {
@@ -37,6 +49,26 @@ extension RequestComponent {
     }
 
     public static func buildEither(second: RequestComponent) -> RequestComponent {
+        second
+    }
+}
+
+@_functionBuilder public struct FormBuilder {
+    public static func buildBlock(_ partialResults: FormComponent...) -> FormComponent {
+        partialResults.reduce(WrapperForm(data: nil)) { first, next in
+            return first.combined(with: next)
+        }
+    }
+    
+    public static func buildIf(_ value: FormComponent?) -> FormComponent {
+        value ?? WrapperForm(data: nil)
+    }
+    
+    public static func buildEither(first: FormComponent) -> FormComponent {
+        first
+    }
+
+    public static func buildEither(second: FormComponent) -> FormComponent {
         second
     }
 }

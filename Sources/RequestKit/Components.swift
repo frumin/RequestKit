@@ -125,3 +125,36 @@ public struct QueryItem: RequestComponent {
         return URLRequest(url: url).applyingDefaultValues()
     }
 }
+
+public struct Form: RequestComponent {
+    
+    public let request: URLRequest?
+    
+    public init(@FormBuilder builder: () -> FormComponent) {
+        let components = URLComponents()
+        guard let url = components.url else {
+            request = nil
+            return
+        }
+        var formRequest = URLRequest(url: url).applyingDefaultValues()
+        formRequest.httpBody = builder().data
+        request = formRequest
+    }
+    
+}
+
+public struct FormData: FormComponent {
+    public let data: Data?
+    
+    public init(_ data: Data) {
+        self.data = data
+    }
+}
+
+public struct FormText: FormComponent {
+    public let data: Data?
+    
+    public init(_ string: String) {
+        self.data = string.data(using: .utf8)
+    }
+}

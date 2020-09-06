@@ -42,6 +42,12 @@ struct WrapperRequest: RequestComponent {
             combinedRequest.httpMethod = request?.httpMethod ?? URLRequest.Constants.nullHttpMethodValue
         }
         
+        if let otherBody = otherRequest.request?.httpBody {
+            combinedRequest.httpBody = otherBody
+        } else {
+            combinedRequest.httpBody = request?.httpBody
+        }
+        
         return WrapperRequest(request: combinedRequest)
     }
 }

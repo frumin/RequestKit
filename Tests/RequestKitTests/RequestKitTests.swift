@@ -28,6 +28,11 @@ struct SampleRequestBuilder {
 		Header("Authentication", "Bearer j4q32489w8e9fw")
 		Header("x-client-id", "EDDD436F-7D2F-4B4B-80BD-A9403EB06BD5")
         
+        Form {
+            FormText("testing")
+            FormText("123")
+            FormData(Data(repeating: 0x41, count: 1))
+        }
 	}
 	
 }
@@ -50,6 +55,8 @@ final class RequestKitTests: XCTestCase {
         XCTAssertEqual(request.url?.absoluteString, "x-sample-app://example.com:8080/api/v1/search?q=test&api_version=1.0&condition=true")
         
         XCTAssertEqual(request.httpMethod, "POST")
+        
+        XCTAssertEqual(String(data: request.httpBody!, encoding: .utf8), "testing123A")
     }
 
     static var allTests = [

@@ -12,7 +12,7 @@ extension URLComponents {
     func combined(with components: URLComponents) -> URLComponents {
         var newComponents = self
         newComponents.host.setValueForNil(components.host)
-        newComponents.scheme.setValueForNil(components.scheme)
+        newComponents.scheme.setValueForNil(components.scheme ?? "https")
         newComponents.port.setValueForNil(components.port)
         newComponents.queryItems.add(components.queryItems)
         newComponents.path += components.path

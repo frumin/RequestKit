@@ -28,15 +28,15 @@ extension RequestComponent {
 		}
 	}
     
-    static func buildIf(_ value: RequestComponent?) -> RequestComponent {
+    public static func buildIf(_ value: RequestComponent?) -> RequestComponent {
         value ?? WrapperRequest.init(request: nil)
     }
     
-    static func buildEither(first: RequestComponent) -> RequestComponent {
+    public static func buildEither(first: RequestComponent) -> RequestComponent {
         first
     }
 
-    static func buildEither(second: RequestComponent) -> RequestComponent {
+    public static func buildEither(second: RequestComponent) -> RequestComponent {
         second
     }
 }

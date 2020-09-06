@@ -7,6 +7,19 @@
 
 import Foundation
 
+public enum Method: String, RequestComponent {
+    case get = "GET"
+    case post = "POST"
+    
+    public var request: URLRequest? {
+        let components = URLComponents()
+        guard let url = components.url else { return nil }
+        var request = URLRequest(url: url).applyingDefaultValues()
+        request.httpMethod = self.rawValue
+        return request
+    }
+}
+
 public struct Header: RequestComponent {
     let key: String
     let value: String
@@ -19,7 +32,7 @@ public struct Header: RequestComponent {
     public var request: URLRequest? {
         let components = URLComponents()
         guard let url = components.url else { return nil }
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: url).applyingDefaultValues()
         request.setValue(value, forHTTPHeaderField: key)
         return request
     }
@@ -49,7 +62,7 @@ public struct Host: RequestComponent {
     public var request: URLRequest? {
         let components = URLComponents(host: name)
         guard let url = components.url else { return nil }
-        return URLRequest(url: url)
+        return URLRequest(url: url).applyingDefaultValues()
     }
 }
 
@@ -63,7 +76,7 @@ public struct Port: RequestComponent {
     public var request: URLRequest? {
         let components = URLComponents(port: port)
         guard let url = components.url else { return nil }
-        return URLRequest(url: url)
+        return URLRequest(url: url).applyingDefaultValues()
     }
 }
 
@@ -77,7 +90,7 @@ public struct Scheme: RequestComponent {
     public var request: URLRequest? {
         let components = URLComponents(scheme: scheme)
         guard let url = components.url else { return nil }
-        return URLRequest(url: url)
+        return URLRequest(url: url).applyingDefaultValues()
     }
 }
 
@@ -92,7 +105,7 @@ public struct Path: RequestComponent {
     public var request: URLRequest? {
         let components = URLComponents(path: path)
         guard let url = components.url else { return nil }
-        return URLRequest(url: url)
+        return URLRequest(url: url).applyingDefaultValues()
     }
 }
 
@@ -109,6 +122,6 @@ public struct QueryItem: RequestComponent {
         let queryItem = URLQueryItem(name: key, value: value)
         let components = URLComponents(queryItems: [queryItem])
         guard let url = components.url else { return nil }
-        return URLRequest(url: url)
+        return URLRequest(url: url).applyingDefaultValues()
     }
 }

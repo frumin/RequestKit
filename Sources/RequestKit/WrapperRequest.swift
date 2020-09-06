@@ -26,7 +26,7 @@ struct WrapperRequest: RequestComponent {
         
         guard let url = combinedComponents.url else { return self }
         
-        var combinedRequest = URLRequest(url: url)
+        var combinedRequest = URLRequest(url: url).applyingDefaultValues()
         if let myHeaders = request?.allHTTPHeaderFields {
             let combinedHeaders = myHeaders.merging((otherRequest.request?.allHTTPHeaderFields  ?? [:])) { (_, new) in
                 new
@@ -34,6 +34,12 @@ struct WrapperRequest: RequestComponent {
             combinedRequest.allHTTPHeaderFields = combinedHeaders
         } else {
             combinedRequest.allHTTPHeaderFields = otherRequest.request?.allHTTPHeaderFields
+        }
+        
+        if let otherMethod = otherRequest.request?.httpMethod, otherMethod != URLRequest.Constants.nullHttpMethodValue {
+            combinedRequest.httpMethod = otherMethod
+        } else {
+            combinedRequest.httpMethod = request?.httpMethod ?? URLRequest.Constants.nullHttpMethodValue
         }
         
         return WrapperRequest(request: combinedRequest)

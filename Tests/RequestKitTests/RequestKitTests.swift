@@ -6,6 +6,7 @@ struct SampleRequestBuilder {
     let condition: Bool
 	
 	@RequestBuilder func makeSampleRequest() -> RequestComponent {
+        Method.post
         Scheme("x-sample-app")
         Host("example.com")
         Port(8080)
@@ -47,6 +48,8 @@ final class RequestKitTests: XCTestCase {
         XCTAssertEqual(request.allHTTPHeaderFields?["x-client-id"], "EDDD436F-7D2F-4B4B-80BD-A9403EB06BD5")
         
         XCTAssertEqual(request.url?.absoluteString, "x-sample-app://example.com:8080/api/v1/search?q=test&api_version=1.0&condition=true")
+        
+        XCTAssertEqual(request.httpMethod, "POST")
     }
 
     static var allTests = [

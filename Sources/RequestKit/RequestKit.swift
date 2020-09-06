@@ -23,7 +23,7 @@ extension RequestComponent {
 @_functionBuilder public struct RequestBuilder {
     
 	public static func buildBlock(_ partialResults: RequestComponent...) -> RequestComponent {
-		partialResults.reduce(partialResults.first!) { first, next in
+		partialResults.reduce(WrapperRequest(request: nil)) { first, next in
 			return first.combined(with: next)
 		}
 	}

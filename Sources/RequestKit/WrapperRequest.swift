@@ -11,12 +11,18 @@ struct WrapperRequest: RequestComponent {
     let request: URLRequest?
     
     func combined(with otherRequest: RequestComponent) -> RequestComponent {
-        guard let myUrl = request?.url,
+        let combinedComponents: URLComponents
+        if let myUrl = request?.url,
             let myComponents = URLComponents(url: myUrl, resolvingAgainstBaseURL: false),
             let otherUrl = otherRequest.request?.url,
-            let otherComponents = URLComponents(url: otherUrl, resolvingAgainstBaseURL: false) else { return self }
-        
-        let combinedComponents = myComponents.combined(with: otherComponents)
+            let otherComponents = URLComponents(url: otherUrl, resolvingAgainstBaseURL: false) {
+            combinedComponents = myComponents.combined(with: otherComponents)
+        } else if let otherUrl = otherRequest.request?.url,
+            let otherComponents = URLComponents(url: otherUrl, resolvingAgainstBaseURL: false) {
+            combinedComponents = otherComponents
+        } else {
+            return self
+        }
         
         guard let url = combinedComponents.url else { return self }
         

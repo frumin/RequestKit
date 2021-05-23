@@ -32,7 +32,7 @@ extension FormComponent {
     }
 }
 
-@_functionBuilder public struct RequestBuilder {
+@resultBuilder public struct RequestBuilder {
     
 	public static func buildBlock(_ partialResults: RequestComponent...) -> RequestComponent {
 		partialResults.reduce(WrapperRequest(request: nil)) { first, next in
@@ -53,7 +53,7 @@ extension FormComponent {
     }
 }
 
-@_functionBuilder public struct FormBuilder {
+@resultBuilder public struct FormBuilder {
     public static func buildBlock(_ partialResults: FormComponent...) -> FormComponent {
         partialResults.reduce(WrapperForm(data: nil)) { first, next in
             return first.combined(with: next)

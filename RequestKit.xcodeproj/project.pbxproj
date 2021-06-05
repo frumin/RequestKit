@@ -29,7 +29,6 @@
 		E2C74EA72504818800948FF2 /* Optional+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C74EA62504818800948FF2 /* Optional+Additions.swift */; };
 		E2C74EB62505616A00948FF2 /* URLRequest+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C74EB52505616A00948FF2 /* URLRequest+Additions.swift */; };
 		E2C74EB8250563B400948FF2 /* WrapperForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C74EB7250563B400948FF2 /* WrapperForm.swift */; };
-		OBJ_22 /* RequestKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* RequestKit.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* RequestKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* RequestKitTests.swift */; };
 		OBJ_41 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
@@ -65,7 +64,6 @@
 		OBJ_12 /* RequestKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestKitTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* RequestKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestKit.swift; sourceTree = "<group>"; };
 		"RequestKit::RequestKit::Product" /* RequestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RequestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"RequestKit::RequestKitTests::Product" /* RequestKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = RequestKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -165,7 +163,6 @@
 		OBJ_8 /* RequestKit */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* RequestKit.swift */,
 				E2904D262659F5B100F670AF /* Builders */,
 				E2C74EA025047AF500948FF2 /* Components.swift */,
 				E2904D272659F5ED00F670AF /* Wrappers */,
@@ -260,7 +257,6 @@
 			buildActionMask = 0;
 			files = (
 				E2904D252659F57800F670AF /* FormBuilder.swift in Sources */,
-				OBJ_22 /* RequestKit.swift in Sources */,
 				E2C74EA72504818800948FF2 /* Optional+Additions.swift in Sources */,
 				E2C74EA525047B4000948FF2 /* WrapperRequest.swift in Sources */,
 				E2C74EA325047B2000948FF2 /* URLComponents+Additions.swift in Sources */,

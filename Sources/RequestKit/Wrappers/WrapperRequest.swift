@@ -36,10 +36,11 @@ struct WrapperRequest: RequestComponent {
             combinedRequest.allHTTPHeaderFields = otherRequest.request?.allHTTPHeaderFields
         }
         
-        if let otherMethod = otherRequest.request?.httpMethod, otherMethod != URLRequest.Constants.nullHttpMethodValue {
+        if let otherMethod = otherRequest.request?.httpMethod,
+           otherMethod != URLRequest.Constants.nullHttpMethodValue {
             combinedRequest.httpMethod = otherMethod
         } else {
-            combinedRequest.httpMethod = request?.httpMethod ?? URLRequest.Constants.nullHttpMethodValue
+            combinedRequest.httpMethod = request?.httpMethod
         }
         
         if let otherBody = otherRequest.request?.httpBody {

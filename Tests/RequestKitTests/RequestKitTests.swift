@@ -3,10 +3,11 @@ import XCTest
 
 struct SampleRequestBuilder {
     
+    typealias RequestBuilderBlock = () -> RequestComponent
+    
     let condition: Bool
 	
-	@RequestBuilder func makeSampleRequest() -> RequestComponent {
-        Method.post
+    @RequestBuilder func makeSampleRequest(@RequestBuilder _ additionalComponents: RequestBuilderBlock) -> RequestComponent {
         Scheme("x-sample-app")
         Host("example.com")
         Port(8080)
@@ -33,6 +34,8 @@ struct SampleRequestBuilder {
             FormText("123")
             FormData(Data(repeating: 0x41, count: 1))
         }
+        
+        additionalComponents()
 	}
 	
 }
@@ -42,7 +45,7 @@ final class RequestKitTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        let component = SampleRequestBuilder(condition: true).makeSampleRequest()
+        let component = SampleRequestBuilder(condition: true).makeSampleRequest() { }
         guard let request = component.request else {
             XCTAssert(false)
             return
@@ -54,9 +57,21 @@ final class RequestKitTests: XCTestCase {
         
         XCTAssertEqual(request.url?.absoluteString, "x-sample-app://example.com:8080/api/v1/search?q=test&api_version=1.0&condition=true")
         
-        XCTAssertEqual(request.httpMethod, "POST")
+        XCTAssertEqual(request.httpMethod, "GET")
         
         XCTAssertEqual(String(data: request.httpBody!, encoding: .utf8), "testing123A")
+    }
+    
+    func testMethodChange() {
+        let component = SampleRequestBuilder(condition: true).makeSampleRequest() {
+            Method.post
+        }
+        guard let request = component.request else {
+            XCTAssert(false)
+            return
+        }
+        
+        XCTAssertEqual(request.httpMethod, "POST")
     }
 
     static var allTests = [
